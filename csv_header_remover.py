@@ -16,7 +16,7 @@ for file in os.listdir("."):
                 csv_rows.append(row)
 
         csv_file_obj.close()
-        csv_file_obj.open(os.path.join("header_removed", file), "w", newLine="")
+        csv_file_obj = open(os.path.join("header_removed", file), "w", newline="")
         csv_writer = csv.writer(csv_file_obj)
 
         for row in csv_rows:
