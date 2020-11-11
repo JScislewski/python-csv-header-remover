@@ -9,10 +9,16 @@ for file in os.listdir("."):
 
         csv_rows = []
         csv_file_obj = open(file)
-        reader_obj = csv.reader(csv_file_obj)
+        csv_reader = csv.reader(csv_file_obj)
 
-        for row in reader_obj:
-            if reader_obj.line_num != 1:
+        for row in csv_reader:
+            if csv_reader.line_num != 1:
                 csv_rows.append(row)
 
+        csv_file_obj.close()
+        csv_file_obj.open(os.path.join("header_removed", file), "w", newLine="")
+        csv_writer = csv.writer(csv_file_obj)
+
+        for row in csv_rows:
+            csv_writer.writerow(row)
         csv_file_obj.close()
